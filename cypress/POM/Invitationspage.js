@@ -2,7 +2,7 @@ class InvitationPage
 {
     Invitation()
     {
-        cy.visit("https://www.dev.inytes.com/")
+        cy.visit("https://dev.inytes.com/")
         cy.contains("Create Invitation").click()
         
     }

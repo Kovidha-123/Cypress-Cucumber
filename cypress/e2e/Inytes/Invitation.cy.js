@@ -5,7 +5,7 @@ import Login from "../../POM/Login";
 
 Given("Inytes url", () =>{
 
-    cy.visit("https://inytes.com/")
+    cy.visit("https://dev.inytes.com/")
 })
 
 When("Click on Create Invitation", () =>{
@@ -35,7 +35,7 @@ Then("Page should nagivate to Login page", () =>{
 
 Given("Login page", ()=>{
 
-    cy.visit('https://www.inytes.com/login/') 
+    cy.visit('https://dev.inytes.com/login/') 
 })
 When("valid credentails is provided", ()=>{  
     

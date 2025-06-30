@@ -76,6 +76,20 @@
             "response" : "No",
             "adultscount" : "3",
             "kidscount": "4"
+      },
+
+      "EditedCreate":
+      {
+            "category": "Holi",
+            "initialTitle": "Holi Celebrations",
+            "editedTitle": "Grand Holi Festival 2025",
+            "initialPhoneNo": "9988776655",
+            "editedPhoneNo": "9988776677",
+            "initialVenue": "Resort",
+            "editedVenue": "Grand Resort & Spa",
+            "location": "Sri sai nilayam",
+            "mesg": "Please welcome",
+            "regionalmesg": "Welcome"
       }
       
     

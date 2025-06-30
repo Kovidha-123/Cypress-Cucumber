@@ -140,4 +140,67 @@ Given("Select any Popular card", ()=>
       create.popularCards()
 })
 
+When("create the Invitation with edited card data", ()=>
+{
+      const editedData = testdata.EditedCreate;
+      const create = new CreateCard()
+      create.categoryselect(editedData.category)
+      create.createInviteWithEditedData(
+            editedData.initialTitle, 
+            editedData.editedTitle, 
+            editedData.initialPhoneNo, 
+            editedData.editedPhoneNo, 
+            editedData.initialVenue, 
+            editedData.editedVenue, 
+            editedData.location, 
+            editedData.mesg, 
+            editedData.regionalmesg
+      )
+})
+
+When("create the Event card with personalize Event card option", ()=>
+{
+    const createdata = testdata.Create;
+    const create = new CreateCard()
+    create.createEventCard(createdata.title, true)
+})
+
+Then("Event card should be created successfully", ()=>
+{
+    cy.get('#downloadGreeting', { timeout: 15000 }).should('be.visible')
+})
+
+When("create the Event card with personalize Event card option from Popular Cards", ()=>
+{
+    const createdata = testdata.Create;
+    const create = new CreateCard()
+    create.createEventCard(createdata.title)
+})
+
+Given("Select any Do It Yourself card", ()=>
+{
+    const create = new CreateCard()
+    create.selectDoItYourself()
+})
+
+Given("Select any Do It Yourself Landscape card", ()=>
+{
+    const create = new CreateCard()
+    create.selectDoItYourselfLandscape()
+})
+
+When("create the Event card from Do it yourself option", ()=>
+{
+    const createdata = testdata.Create;
+    const create = new CreateCard()
+    create.createEventCard(createdata.title, true)
+})
+
+When("create the Event card from Do it yourself option Landscape", ()=>
+{
+    const createdata = testdata.Create;
+    const create = new CreateCard()
+    create.createEventCard(createdata.title, true)
+})
+
 
