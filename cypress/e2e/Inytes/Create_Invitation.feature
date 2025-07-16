@@ -48,7 +48,6 @@ Scenario: User should not able to Create the Invitation without providing addres
 When not providing address and click on Save
 Then Invitation should be not be created
 
-
 Scenario: Create the Invitation with personalize Event card.
 # Given Login into the application
 When create the Invitation with personalize Event card
@@ -61,7 +60,7 @@ Given Select any Featured cards
 When create the Invitation with personalize RSVP card
 Then Invitation should be created
 
-@focus
+
 Scenario: User should able to create RSVP card from the Popular Cards.
 # Given Login into the application
 Given Select any Popular card

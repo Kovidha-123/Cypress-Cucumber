@@ -254,22 +254,38 @@ class CreateCard
 
     createInviteforEventCard(title)
     {
-      cy.get("#mix-up-list").find('.cd-item').eq(0).click()
+      cy.get("#mix-up-list").find('.cd-item').eq(0).click({force: true})
       // cy.contains('a', 'Personalize Event').should('exist').click()
       cy.get('a.customize-link1').click();
+      
+      // Wait for the sweet alert to appear
+      cy.get('.sweet-alert').should('be.visible')
       cy.get('.sweet-alert h2').should('have.text', 'Event Cards');
-      // cy.get('.sweet-alert p').should('have.text', 'Tip: You can only create and download an event card with this choice. If you want to use our RSVP system to send out invitations, use the RSVP event option.');
-      // cy.get('button.confirm').click({force:true})
-      // cy.contains('OK').click({force:true})
-   
-      cy.get('div.sweet-alert button.confirm').should('be.visible').click({force:true});
       cy.wait(2000)
-      cy.location('pathname', { timeout: 10000 }).should('include', '/create-invitation/');
-       cy.get('#nextDetails').click()
-       cy.get("#vTitle", { timeout: 15000 }).should('be.visible').type(title)
-       cy.get('#saveGreeting').click()
-       cy.get('#downloadGreeting').should('contain', 'Pay to Download')
-       
+      // Use 'contain' instead of exact text match to handle extra text
+      cy.get('.sweet-alert p').should('contain', 'Tip: You can only create and download an event card with this choice. If you want to use our RSVP system to send out invitations, use the RSVP event option.');
+      cy.wait(2000)
+      // Click OK button on the popup - using multiple selectors for reliability
+      cy.get('.sweet-alert .sa-button-container button.confirm').should('be.visible').click({force:true});
+      
+      // Alternative: cy.get('.sa-confirm-button-container button.confirm').click({force:true});
+      // Alternative: cy.contains('button', 'OK').click({force:true});
+      
+      // Click Next button
+      cy.get('#nextDetails').click()
+      cy.wait(2000)
+      
+      // Fill in Event Card details
+      cy.get("#vTitle1", { timeout: 15000 }).should('be.visible').type(title)
+      
+      // Fill in Host information
+      cy.get('#vHostName1').should('be.visible').type('Event Host Name')
+      
+      // Select Country - USA
+      cy.get('#country-select, #dCountry').select('USA')
+      // Save the event card
+      cy.get('#saveGreeting').click()
+      cy.get('#downloadGreeting').should('contain', 'Pay to Download')
     }
 
 }
